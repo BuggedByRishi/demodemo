@@ -1,0 +1,17 @@
+-- +goose Up
+-- create schemas for different platforms
+CREATE SCHEMA IF NOT EXISTS extensions;
+CREATE SCHEMA IF NOT EXISTS auth;
+CREATE SCHEMA IF NOT EXISTS core;
+CREATE SCHEMA IF NOT EXISTS proxmox;
+CREATE SCHEMA IF NOT EXISTS guacamole;
+CREATE SCHEMA IF NOT EXISTS tally;
+
+
+-- +goose Down
+DROP SCHEMA IF EXISTS tally;
+DROP SCHEMA IF EXISTS guacamole;
+DROP SCHEMA IF EXISTS proxmox;
+DROP SCHEMA IF EXISTS core;
+DROP SCHEMA IF EXISTS auth;
+DROP SCHEMA IF EXISTS extensions;
