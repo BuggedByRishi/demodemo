@@ -1,3 +1,4 @@
+cat > internal/config/config.go << 'EOF'
 package config
 
 import (
@@ -13,12 +14,12 @@ type Config struct {
 }
 
 func Load() Config {
-	host := getenvOr("DB_HOST", "localhost")
-	port := getenvOr("DB_PORT", "5432")
-	user := mustGetenv("DB_USER")
+	host     := getenvOr("DB_HOST", "localhost")
+	port     := getenvOr("DB_PORT", "5432")
+	user     := mustGetenv("DB_USER")
 	password := mustGetenv("DB_PASSWORD")
-	dbname := mustGetenv("DB_NAME")
-	sslmode := getenvOr("DB_SSLMODE", "disable")
+	dbname   := mustGetenv("DB_NAME")
+	sslmode  := getenvOr("DB_SSLMODE", "disable")
 
 	dsn := fmt.Sprintf(
 		"postgres://%s:%s@%s:%s/%s?sslmode=%s",
@@ -46,3 +47,4 @@ func getenvOr(key, fallback string) string {
 	}
 	return fallback
 }
+EOF
